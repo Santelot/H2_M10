@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .section {
+            margin-bottom: 15px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .section-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: right;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        .time-title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+                document.getElementById('activity-2').style.display = 'none';
+                document.getElementById('activity-1').style.display = 'none';
+                document.getElementById('activity-5').style.display = 'none';
+            }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H2 - M010</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- Actividad 1 (4 pasos) -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('bienvenida')">
+        <div class="title">
+            <span>👋 Actividad 1: Bienvenida (4 pasos)</span>
+            <span>⏰ Tiempo: 2 minutos</span>
+        </div>
+        <div class="subtitle">Iniciar la clase con el ánimo correcto para publicar su primera app en Glide</div>
+    </div>
+    <div id="bienvenida" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 1 "Bienvenida"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Genios, ¡bienvenidos! Hoy es un día clave, publicaremos su primera app en Glide y la probaremos en tiempo real con sus compañeros.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 2 "Escaneo de ánimo"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Si están listos para el gran lanzamiento de su app, levanten los brazos y den una vuelta. Si aún les falta algo de energía, toquen sus rodillas y den una vuelta también.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 3 "Gracias por Asistir"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Juntemos nuestras manos y hagamos una reverencia para agradecer la oportunidad de estar aquí. ¡Gracias por asistir, Genios!
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar Diapositiva 4 "Objetivos de la Misión"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Hoy tenemos dos objetivos: 1.- Publicar su app en Glide. 2.- Probarla con sus compañeros y hacer ajustes.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 2 (4 pasos) -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('stateChange')">
+        <div class="title">
+            <span>🌀 Actividad 2: State Change (4 pasos)</span>
+            <span>⏰ Tiempo: 4 minutos</span>
+        </div>
+        <div class="subtitle">Relajarse y estimular la creatividad mediante un Círculo de Inspiración</div>
+    </div>
+    <div id="stateChange" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 5 "Círculo de Inspiración"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Genios, vamos a hacer una pequeña pausa para relajarnos y estimular la creatividad. Esta vez formaremos un círculo con sus compañeros de fila, donde cada uno compartirá algo que aprendió o una idea inspiradora.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (1 minuto): Proyectar Diapositiva 6 "Formar los círculos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Pónganse de pie, formen un círculo con sus compañeros de fila, y prepárense para compartir su idea o lo que más aprendieron hoy.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (2 minutos): Proyectar Diapositiva 7 "Compartir Ideas"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Ahora, tómense unos minutos para compartir con sus compañeros. Piensen en algo que aprendieron hoy o una idea que les haya inspirado.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar Diapositiva 8 "Conclusión del State Change"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                ¡Gracias por compartir, Genios! Ahora que estamos relajados y más inspirados, sigamos con nuestra misión de hoy.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 3 (4 pasos) -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('introActivity')">
+        <div class="title">
+            <span>🚀 Actividad 3: Team Gnius (4 pasos)</span>
+            <span>⏰ Tiempo: 3 minutos</span>
+        </div>
+        <div class="subtitle">Formar equipos y prepararse para ser desarrolladores y testers</div>
+    </div>
+    <div id="introActivity" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 9 "Rol del Tester"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Hoy vamos a hacer algo diferente. No sólo serán desarrolladores, también serán testers. Un tester se encarga de detectar errores y mejorar la experiencia del usuario probando las aplicaciones. Es un rol clave en el proceso de desarrollo de cualquier app, asegurándose de que funcione perfectamente antes de lanzarla al público.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (0.5 minutos): Proyectar Diapositiva 10 "Formar Parejas"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Primero, reúnanse con sus parejas originales, aquellas con las que diseñaron su app. Les daré 30 segundos para que lo hagan. ¡Rápido, Genios!
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (1 minuto): Proyectar Diapositiva 11 "Formar Equipos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Ahora que están en sus parejas, elijan a otras dos parejas con las que no hayan trabajado antes para formar un equipo de 6 personas. Les daré 1 minuto para organizarse. Recuerden que queremos nuevas ideas y diferentes perspectivas, así que asegúrense de trabajar con nuevos compañeros.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (0.5 minutos): Proyectar Diapositiva 12 "Trabajo en equipo"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Genios, la razón de que formemos equipos más grandes es porque hoy vamos a poner a prueba nuestras apps con diferentes testers. Este es el momento donde recibimos feedback y vemos cómo mejorar la experiencia para los usuarios. Trabajar con compañeros que no conocen sus apps les dará una perspectiva más objetiva.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 4 (12 pasos) -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('introActivity4')">
+        <div class="title">
+            <span>🖥️ Actividad 4: Publicar la app (12 pasos)</span>
+            <span>⏰ Tiempo: 40 minutos</span>
+        </div>
+        <div class="subtitle">Publicar y probar la app con compañeros</div>
+    </div>
+    <div id="introActivity4" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 13 "Publicar la app"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Genios, ahora es el momento de hacer públicas sus aplicaciones. En los próximos 5 minutos, publiquen su app y compartan el enlace con las otras dos parejas de su equipo. ¡Vamos a empezar!
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 2 (5 minutos): Proyectar Diapositiva 14 "Tiempo para publicar"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">N/A</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 3 (0.5 minutos): Proyectar Diapositiva 15 "Probar la primera app"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Ahora vamos a probar la app de la primera pareja del equipo. Durante los próximos 10 minutos, exploren la app, revisen la funcionalidad, y den feedback constructivo. ¡Comencemos!
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 4 (8 minutos): Proyectar Diapositiva 16 "Probar la primera app - Cronómetro"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">N/A</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 5 (0.5 minutos): Proyectar Diapositiva 17 "Probar la segunda app"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Ahora vamos a probar la app de la segunda pareja. Como antes, tendrán 10 minutos para explorarla, probar las funcionalidades y dar su feedback. ¡Adelante!
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 6 (8 minutos): Proyectar Diapositiva 18 "Probar la segunda app - Cronómetro"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">N/A</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 7 (0.5 minutos): Proyectar Diapositiva 19 "Probar la tercera app"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Es momento de probar la app de la última pareja del equipo. Recuerden dar un buen feedback, centrado en mejorar la funcionalidad y experiencia de usuario. ¡Vamos a ello!
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 8 (8 minutos): Proyectar Diapositiva 20 "Probar la tercera app - Cronómetro"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">N/A</div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 9 (6.5 minutos): Proyectar Diapositiva 21 "Compartir la experiencia"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Ahora vamos a escuchar de tres parejas cómo fue su experiencia, desde el diseño hasta ver su app funcionando en manos de otros usuarios. Cuéntenos qué aprendieron y qué mejorarían.
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 10 (2 minutos): Proyectar Diapositiva 22 "Reflexión final y retroalimentación"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Por último, voy a seleccionar a 3 parejas, cada pareja nos va a contar qué harían diferente si volvieran a comenzar el proyecto desde cero. ¿Qué mejorarían desde la fase de diseño de datos?
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 11 (0.5 minutos): Proyectar Diapositiva 23 "Objetivos cumplidos"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Genios, hoy hemos completado los objetivos: publicar y probar nuestras apps con otros usuarios. ¡Gran trabajo, estamos listos para el siguiente reto!
+            </div>
+        </div>
+        <div class="section">
+            <div class="step-title">Paso 12 (0.5 minutos): Proyectar Diapositiva 24 "You've Got Mon-e"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Genios, han hecho un excelente trabajo hoy. Publicar una app y recibir feedback es un gran paso. Les damos su Mon-e por su esfuerzo. ¡Nos vemos en la próxima misión!
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Actividad 5 (1 paso) -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('introActivity5')">
+        <div class="title">
+            <span>🧹 Actividad 5: Honor The Dojo (1 paso)</span>
+            <span>⏰ Tiempo: 0.5 minutos</span>
+        </div>
+        <div class="subtitle">Recoger el espacio de trabajo y finalizar la clase</div>
+    </div>
+    <div id="introActivity5" class="content">
+        <div class="section">
+            <div class="step-title">Paso 1 (0.5 minutos): Proyectar Diapositiva 25 "Honor The Dojo"</div>
+            <div class="section-title">Diálogo del Maestro</div>
+            <div class="dialogue">
+                Genios, es momento de honrar el espacio en el que hemos trabajado hoy. Por favor, devuelvan las Magic Tablets y asegúrense de dejar todo en orden. ¿Les gustó la misión de hoy?
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
